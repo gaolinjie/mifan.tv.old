@@ -1,0 +1,38 @@
+{% extends 'snippet/layout.html' %}
+
+{% block main %}
+<div class="setting-card">
+    <form class="form-horizontal" action='' method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <div id="legend">
+                <legend class="setting-title">设置头像</legend>
+            </div>
+            {{ errors|dump_errors }}
+            <div class="control-group">
+                <!-- Avatar -->
+                <label class="control-label" for="username">头&nbsp;&nbsp;&nbsp;&nbsp;像</label>
+                <div class="controls">
+                    <img src="/static/avatar/user/b_{{ user_info.avatar or 'default.png' }}?t={{ gen_random() }}" alt="" class="s-avatar" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Avatar-->
+                <label class="control-label" for="avatar">上&nbsp;&nbsp;&nbsp;&nbsp;传</label>
+                <div class="controls">
+                    <input type="file" id="avatar" name="avatar" placeholder="" class="input-xlarge">
+                    <p class="help-block">请选择要上传的头像文件</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                    <button class="btn btn-primary">保存更改</button>
+                </div>
+            </div>
+        </fieldset>
+        {{ xsrf_form_html() }}
+    </form>
+</div>
+{% endblock %}
